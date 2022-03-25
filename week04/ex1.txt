@@ -1,0 +1,54 @@
+### Dzhemilya Gizutdinova, lab #4.
+
+###  Task 1
+
+
+
+### 1. Find the names of suppliers who supply some red part.
+
+#### 	*∏sname(((σ color = 'red') (Parts ⋈ Catalog)) ⋈ Suppliers)*
+
+### 2. Find the sids of suppliers who supply some red or green part. 
+
+#### 	*∏sid(σ color = ('red' v 'green') (Parts) ) ⋈ Catalog )*
+
+### 3. Find the sids of suppliers who supply some red part or are at 221 Packer Street.
+
+#### 	*∏sid( (σ color = 'red') (Parts ⋈ Catalog) ) U ∏sid( (σ address = '221 Packer Street') (Supplier) )*
+
+### 4. Find the sids of suppliers who supply some red part and some green part.
+
+#### 	*∏sid( (σ color = 'red') ( Parts ⋈ Catalog) ) ∩ ∏sid( (σ color = 'green')  ( Parts ⋈ Catalog) )*
+
+### 5. Find the sids of suppliers who supply every part. 
+
+#### 	*∏sid( ∏sid(Catalog) x ∏sid(Parts) )*
+
+### 6. Find the sids of suppliers who supply every red part.
+
+#### 	*∏sid,pid(Catalog) ÷ ∏pid( (σ color = 'red') ( Parts )*  
+
+### 7. Find the sids of suppliers who supply every red or green part. 
+
+#### 	*∏sid,pid(Catalog) ÷ ∏sid( (σ color = 'red' v color = 'green') ( Parts)  )* 
+
+### 8. Find the sids of suppliers who supply every red part or supply every green part. 
+
+#### 	*∏sid( ∏sid(Catalog) ÷ ∏sid( (σ color = 'red') ( Parts ⋈ Catalog) )  ) U ∏sid( ∏sid(Catalog) ÷ ∏sid( (σ color = 'green') ( Parts ⋈ Catalog) )  )* 
+
+### 9. Find pairs of sids such that the supplier with the first sid charges more for some part than the supplier with the second sid.
+
+#### *A ← (Catalog)* 
+
+#### *B ← (Catalog)* 
+
+#### *∏A.sid, B.sid(A ⋈  A.pid == B.pid ∧ A.cost > B.cost B )* 
+
+### 10. Find the pids of parts supplied by at least two different suppliers
+
+#### *A ← ∏sid,pid(Catalog)* 
+
+#### *B ← ∏sid,pid(Catalog)* 
+
+#### *∏ A.pid (A ⋈  A.sid != B.sid ∧ A.pid == B.pid B )*
+
