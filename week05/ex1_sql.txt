@@ -1,0 +1,63 @@
+CREATE TYPE Address
+(
+address_id int,
+district char(50),
+street char(50),
+city char(50)
+house# int,
+);
+
+CREATE TABLE Item_List_In_Manufacturer
+(
+item_List_In_Manufacturer_Id int NOT NULL PRIMARY KEY,
+manufacturer_Id int,
+item_Id int,
+quantity int,
+foreign key (manufacturer_Id) REFERENCES Manufacturer(manufacturer_Id),
+foreign key (item_Id) REFERENCES Item(item_Id),
+);
+
+CREATE TABLE Manufacturer
+(
+manufacturer_Id int NOT NULL PRIMARY KEY,
+phone_number char(16),
+);
+
+CREATE TABLE Item
+(
+item_Id int NOT NULL PRIMARY KEY,
+description char(128),
+);
+
+CREATE TABLE Item_List_In_Order
+(
+item_List_In_Order_Id int NOT NULL PRIMARY KEY,
+order_Id int,
+item_Id int,
+quantity int,
+foreign key (order_Id) REFERENCES Order(order_Id),
+foreign key (item_Id) REFERENCES Item(item_Id),
+);
+
+CREATE TABLE Order
+(
+order_Id int NOT NULL PRIMARY KEY,
+date date,
+shipping_address Address,
+);
+
+CREATE TABLE Customer
+(
+client_id int NOT NULL PRIMARY KEY,
+order_Id int,
+balance int,
+credit_Limit int,
+discount int,
+shipping_address Address,
+foreign key (order_Id) REFERENCES Order(order_Id),
+);
+
+
+
+
+
