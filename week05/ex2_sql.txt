@@ -1,0 +1,25 @@
+CREATE TABLE Company
+(
+company_id int NOT NULL PRIMARY KEY,
+group_id int,
+parentCompany varchar(255);
+FOREIGN KEY parentCompany REFERENCES Company(company_id),
+FOREIGN KEY group_id int REFERENCES Group(group_id),
+);
+CREATE TABLE Items
+(
+item_id int NOT NULL PRIMARY KEY,
+plant_id int,
+FOREIGN KEY plant_id int REFERENCES Plant(plant_id),
+);
+CREATE TABLE Group
+(
+group_id int NOT NULL PRIMARY KEY,
+);
+CREATE TABLE Plant
+(
+plant_id int NOT NULL PRIMARY KEY,
+company_id,
+FOREIGN KEY (company_id) REFERENCES Company(company_id),
+);
+
