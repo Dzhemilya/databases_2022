@@ -10,7 +10,7 @@ as
 $$ 
 begin 
 return query 
-select a.address from address as a having a.address like addr_text and a.city_id between addr_id_from and addr_id_to; 
+select a.address from address as a where a.address like addr_text and a.city_id between addr_id_from and addr_id_to; 
 end; 
 $$ 
 language plpgsql;
